@@ -11,10 +11,13 @@ Proyecto en **Fase 1 – Núcleo** (ver [Roadmap](docs/vision.md#roadmap)). Toda
 ## Documentación
 
 - [`docs/vision.md`](docs/vision.md) — Documento fundacional de producto (filosofía, arquitectura conceptual, capas, roadmap y modelo de costos).
+- [`docs/decisions/`](docs/decisions/) — Registro de decisiones de arquitectura/producto (ADRs), para que cualquier IA que retome el proyecto entienda por qué se tomó cada decisión sin depender del historial de chat.
 
-## Contexto para agentes de IA
+## Trabajar en este repo con cualquier IA
 
-- [`CLAUDE.md`](CLAUDE.md) — contexto de proyecto para Claude Code.
-- [`AGENTS.md`](AGENTS.md) — contexto de proyecto en formato estándar para Codex y otras herramientas de agentes.
+Este proyecto está pensado para trabajarse indistintamente con Claude Code, Codex o cualquier otra herramienta de desarrollo asistido por IA:
 
-Ambos archivos apuntan a la misma fuente de verdad (`docs/vision.md`) y se deben mantener sincronizados a medida que el proyecto avance.
+- [`AGENTS.md`](AGENTS.md) — fuente única de verdad del contexto de proyecto (estado, convenciones, cómo coordinar entre sesiones/herramientas distintas).
+- [`CLAUDE.md`](CLAUDE.md) — importa `AGENTS.md` directamente, no hay contenido duplicado que pueda desincronizarse.
+
+Cualquier cambio de convención, stack o estructura se documenta en `AGENTS.md` en el mismo commit que lo introduce.
