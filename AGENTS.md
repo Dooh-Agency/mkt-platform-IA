@@ -10,7 +10,15 @@ Principio rector del producto (aplica también a cómo se construye): **la compl
 
 ## Estado del repo
 
-Fase 1 (Núcleo), sin stack técnico definido todavía. No asumas frameworks, lenguajes ni estructura de carpetas: confirmalo con el usuario antes de generar código o scaffolding de un stack específico. Cuando se defina, esta sección se actualiza con comandos de build/test/lint y estructura de carpetas.
+Fase 1 (Núcleo). Stack y arquitectura definidos, scaffolding de código todavía no iniciado. Antes de generar código, leé:
+
+- [`docs/architecture.md`](docs/architecture.md) — arquitectura técnica y vista de componentes.
+- [`docs/roadmap.md`](docs/roadmap.md) — etapas de crecimiento y qué corresponde a cada fase.
+- [`docs/decisions/0001-stack-tecnico.md`](docs/decisions/0001-stack-tecnico.md) — stack: TypeScript full-stack, Next.js, PostgreSQL + pgvector, Prisma, BullMQ/Redis, Vercel + Railway.
+- [`docs/decisions/0002-orquestacion-agentes.md`](docs/decisions/0002-orquestacion-agentes.md) — orquestador propio sobre Claude Agent SDK, sin framework multi-agente de terceros.
+- [`docs/decisions/0003-estructura-monorepo.md`](docs/decisions/0003-estructura-monorepo.md) — estructura de monorepo (pnpm workspaces + Turborepo, `apps/` y `packages/`).
+
+Todavía no hay comandos de build/test/lint porque no hay scaffolding de código. Cuando se inicialice el monorepo, esta sección se actualiza con esos comandos en el mismo commit.
 
 ## Trabajando con múltiples herramientas de IA
 
