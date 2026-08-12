@@ -9,3 +9,6 @@ Thumbs.db
 *.log
 .idea/
 .vscode/
+.next/
+.turbo/
+*.tsbuildinfo

@@ -1,0 +1,27 @@
+{
+  "name": "@dooh/db",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "main": "./src/client.ts",
+  "types": "./src/client.ts",
+  "scripts": {
+    "generate": "prisma generate",
+    "migrate": "prisma migrate dev",
+    "seed": "tsx prisma/seed.ts",
+    "typecheck": "tsc --noEmit",
+    "lint": "biome check ."
+  },
+  "dependencies": {
+    "@prisma/client": "^5.22.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.0",
+    "prisma": "^5.22.0",
+    "tsx": "^4.19.0",
+    "typescript": "^5.7.0"
+  },
+  "prisma": {
+    "seed": "tsx prisma/seed.ts"
+  }
+}

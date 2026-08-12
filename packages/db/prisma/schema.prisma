@@ -1,0 +1,153 @@
+// Esquema mínimo descrito en docs/architecture.md §4.
+// No se agregan modelos que no estén ya justificados por Fase 1-2 del roadmap.
+
+generator client {
+  provider        = "prisma-client-js"
+  previewFeatures = ["postgresqlExtensions"]
+}
+
+datasource db {
+  provider   = "postgresql"
+  url        = env("DATABASE_URL")
+  extensions = [vector]
+}
+
+model Project {
+  id        String   @id @default(cuid())
+  name      String
+  slug      String   @unique
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  objectives     Objective[]
+  researchNotes  ResearchNote[]
+  contentPieces  ContentPiece[]
+
+  @@map("projects")
+}
+
+/// Objetivo declarado por el usuario (Modo Simple) o configuración avanzada (Modo Profesional).
+model Objective {
+  id          String   @id @default(cuid())
+  projectId   String
+  project     Project  @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  description String
+  audience    String?
+  tone        String?
+  frequency   String?
+  createdAt   DateTime @default(now())
+
+  researchNotes ResearchNote[]
+  contentPieces ContentPiece[]
+
+  @@map("objectives")
+}
+
+/// Salidas del Intelligence layer, con embedding para búsqueda semántica (pgvector).
+model ResearchNote {
+  id          String    @id @default(cuid())
+  projectId   String
+  project     Project   @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  objectiveId String?
+  objective   Objective? @relation(fields: [objectiveId], references: [id], onDelete: SetNull)
+  title       String
+  content     String
+  /// vector(1536) — dimensión por defecto de embeddings de uso general; se ajusta si cambia el proveedor.
+  embedding   Unsupported("vector(1536)")?
+  createdAt   DateTime  @default(now())
+
+  @@map("research_notes")
+}
+
+enum ContentPieceStatus {
+  draft
+  qa_pending
+  approved
+  published
+  failed
+}
+
+/// Formatos de salida del Content Production Engine (docs/vision.md).
+enum ContentPieceType {
+  text
+  article
+  video_long
+  video_short
+  carousel
+  image
+  newsletter
+  lead_magnet
+  social_post
+}
+
+model ContentPiece {
+  id          String             @id @default(cuid())
+  projectId   String
+  project     Project            @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  objectiveId String?
+  objective   Objective?         @relation(fields: [objectiveId], references: [id], onDelete: SetNull)
+  type        ContentPieceType
+  status      ContentPieceStatus @default(draft)
+  title       String
+  body        String?
+  assetUrl    String?
+  createdAt   DateTime           @default(now())
+  updatedAt   DateTime           @updatedAt
+
+  jobs               Job[]
+  publicationEvents  PublicationEvent[]
+  metricSnapshots    MetricSnapshot[]
+
+  @@map("content_pieces")
+}
+
+/// Qué se publicó, dónde y con qué resultado (Distribution layer).
+model PublicationEvent {
+  id             String       @id @default(cuid())
+  contentPieceId String
+  contentPiece   ContentPiece @relation(fields: [contentPieceId], references: [id], onDelete: Cascade)
+  channel        String
+  externalId     String?
+  publishedAt    DateTime     @default(now())
+  resultMeta     Json?
+
+  @@map("publication_events")
+}
+
+/// Métricas periódicas por pieza y canal (Optimization layer).
+model MetricSnapshot {
+  id             String       @id @default(cuid())
+  contentPieceId String
+  contentPiece   ContentPiece @relation(fields: [contentPieceId], references: [id], onDelete: Cascade)
+  channel        String
+  capturedAt     DateTime     @default(now())
+  metrics        Json
+
+  @@map("metric_snapshots")
+}
+
+enum JobStatus {
+  pending
+  running
+  completed
+  failed
+}
+
+/// Unidad de trabajo asíncrono despachada por el orquestador (packages/core) y
+/// ejecutada por apps/worker. La cola (BullMQ/Redis) es el mecanismo de ejecución;
+/// esta tabla es el registro de estado para trazabilidad y auditoría.
+model Job {
+  id             String        @id @default(cuid())
+  type           String
+  status         JobStatus     @default(pending)
+  payload        Json
+  result         Json?
+  error          String?
+  attempts       Int           @default(0)
+  contentPieceId String?
+  contentPiece   ContentPiece? @relation(fields: [contentPieceId], references: [id], onDelete: SetNull)
+  createdAt      DateTime      @default(now())
+  updatedAt      DateTime      @updatedAt
+
+  @@map("jobs")
+}
