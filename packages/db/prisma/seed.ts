@@ -1,7 +1,9 @@
-import type { Prisma } from "@prisma/client";
 import { prisma } from "../src/client.js";
 
 const DEMO_PROJECT = { name: "Café Raíz", slug: "cafe-raiz-demo" };
+
+type JsonValue = string | number | boolean | null | JsonObject | JsonValue[];
+type JsonObject = { [key: string]: JsonValue };
 
 /**
  * Datos semilla para recorrer la experiencia de un cliente ficticio desde el
@@ -115,8 +117,8 @@ async function upsertContentPiece(input: {
 async function upsertJob(input: {
   type: string;
   status: "pending" | "completed" | "failed";
-  payload: Prisma.InputJsonValue;
-  result?: Prisma.InputJsonValue;
+  payload: JsonObject;
+  result?: JsonObject;
   error?: string;
   attempts?: number;
   contentPieceId?: string;
