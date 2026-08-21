@@ -17,6 +17,14 @@ const TYPE_LABEL: Record<string, string> = {
   image: "Imagen",
 };
 
+interface ContentPieceWithProject {
+  id: string;
+  project: { name: string };
+  status: string;
+  title: string;
+  type: string;
+}
+
 export const dynamic = "force-dynamic";
 
 export default async function DashboardPage() {
@@ -64,7 +72,7 @@ export default async function DashboardPage() {
           <p className="text-sm text-slate-500">Todavía no hay piezas de contenido.</p>
         ) : (
           <ul className="flex flex-col gap-2">
-            {contentPieces.map((piece) => (
+            {contentPieces.map((piece: ContentPieceWithProject) => (
               <li
                 key={piece.id}
                 className="flex items-center justify-between rounded border border-slate-200 bg-white px-4 py-3"
