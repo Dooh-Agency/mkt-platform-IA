@@ -1,14 +1,23 @@
-import { JOB_QUEUE_NAME, createRedisConnection, runToyTextPipeline } from "@dooh/core";
+import {
+  JOB_QUEUE_NAME,
+  ToolRegistry,
+  createRedisConnection,
+  createTextGenerationTool,
+  runToyTextPipeline,
+} from "@dooh/core";
 import { AnthropicTextProvider } from "@dooh/providers";
 import { type Job, Worker } from "bullmq";
 
 interface GenerateTextJobData {
   projectId: string;
   topic: string;
+  objectiveId?: string;
 }
 
 const connection = createRedisConnection();
 const provider = new AnthropicTextProvider();
+const tools = new ToolRegistry();
+tools.register(createTextGenerationTool(provider));
 
 async function processJob(job: Job<GenerateTextJobData>) {
   switch (job.name) {
@@ -16,7 +25,8 @@ async function processJob(job: Job<GenerateTextJobData>) {
       const result = await runToyTextPipeline({
         projectId: job.data.projectId,
         topic: job.data.topic,
-        provider,
+        objectiveId: job.data.objectiveId,
+        tools,
       });
       return result;
     }

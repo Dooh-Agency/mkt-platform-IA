@@ -124,4 +124,19 @@ Explícito para evitar sobre-ingeniería temprana (ver principio de "no diseñar
 
 - Visión de producto: [`docs/vision.md`](vision.md)
 - Roadmap por etapas: [`docs/roadmap.md`](roadmap.md)
+- Modelo y gates de módulos: [`docs/modulos.md`](modulos.md)
 - Decisiones de stack y orquestación: [`docs/decisions/`](decisions/)
+
+---
+
+## 8. Crecimiento modular
+
+La plataforma se desarrolla como un monolito modular (ADR 0004). El Core y las
+apps son la **Base Operativa**: ofrecen contexto de cliente, tareas,
+herramientas, QA, trazabilidad y UX común. Las capacidades de negocio se suman
+como módulos con pipelines y contratos explícitos, pero no se convierten en
+servicios separados de forma preventiva.
+
+El primer módulo comercial será el plan de contenido y copys; investigación,
+producción visual, distribución y optimización se incorporan solo cuando el
+módulo anterior haya superado sus gates técnico, de calidad, UX, costo y demo.

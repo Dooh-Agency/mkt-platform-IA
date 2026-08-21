@@ -9,6 +9,9 @@
 
 **Objetivo:** tener la base técnica sobre la que todo lo demás se construye, sin producir contenido real todavía.
 
+La Fase 1 implementa el **Módulo 0 — Base Operativa**. El modelo de crecimiento
+posterior está definido en `docs/modulos.md` y ADR 0004.
+
 ### Entregables
 
 1. **Repo y stack** — monorepo funcional (ver ADR 0001), CI corriendo lint/test/build en cada PR.
@@ -17,10 +20,11 @@
 4. **Registro de herramientas** — forma de declarar "esta función/API es una herramienta disponible para tal agente", aunque solo haya 1-2 herramientas reales al principio.
 5. **QA básico** — al menos una validación automática antes de cualquier "publicación" simulada (ej: longitud de texto, formato de archivo).
 6. **UX esqueleto** — layout de Modo Simple / Modo Profesional, aunque las pantallas estén vacías o mockeadas.
+7. **Cliente demo** — seed idempotente de un negocio ficticio (`Café Raíz`) con objetivo, research, piezas en distintos estados y jobs trazables para poder mostrar el producto sin usar datos reales.
 
 ### Definition of Done
 
-Un pipeline de juguete ("generar un texto corto a partir de un tema") corre de punta a punta: entra por Modo Simple, pasa por el orquestador, ejecuta un job real contra un modelo de IA, se guarda en memoria, pasa QA, y se ve el resultado en el dashboard. **No hace falta que publique en ninguna red todavía.**
+Un pipeline de juguete ("generar un texto corto a partir de un tema") corre de punta a punta: entra por Modo Simple, pasa por el orquestador, ejecuta un job real contra un modelo de IA, se guarda en memoria, pasa QA, y se ve el resultado en el dashboard. Además, el equipo puede levantar un Cliente demo con datos semilla representativos para mostrar el flujo completo. **No hace falta que publique en ninguna red todavía.**
 
 ### Fuera de alcance en Fase 1
 

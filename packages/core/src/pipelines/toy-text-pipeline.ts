@@ -1,11 +1,13 @@
 import { prisma } from "@dooh/db";
-import type { TextGenerationProvider } from "@dooh/providers";
 import { runQaGate } from "../qa.js";
+import type { ToolRegistry } from "../tool-registry.js";
+import { TEXT_GENERATION_TOOL_NAME } from "../tools/text-generation.js";
 
 export interface RunToyTextPipelineInput {
   projectId: string;
   topic: string;
-  provider: TextGenerationProvider;
+  objectiveId?: string;
+  tools: ToolRegistry;
 }
 
 export interface RunToyTextPipelineResult {
@@ -28,6 +30,7 @@ export async function runToyTextPipeline(
   const contentPiece = await prisma.contentPiece.create({
     data: {
       projectId: input.projectId,
+      objectiveId: input.objectiveId,
       type: "text",
       status: "draft",
       title: input.topic,
@@ -38,17 +41,20 @@ export async function runToyTextPipeline(
     data: {
       type: "generate_text",
       status: "running",
-      payload: { topic: input.topic },
+      payload: { topic: input.topic, objectiveId: input.objectiveId },
       contentPieceId: contentPiece.id,
     },
   });
 
   try {
-    const generated = await input.provider.generateText({
-      prompt: `Escribí un texto corto (2-3 párrafos) sobre: ${input.topic}`,
-    });
+    const objective = input.objectiveId
+      ? await prisma.objective.findUnique({ where: { id: input.objectiveId } })
+      : null;
+    const generated = (await input.tools.get(TEXT_GENERATION_TOOL_NAME).run({
+      prompt: buildPrompt(input.topic, objective),
+    })) as { text: string; model: string };
 
-    const qa = runQaGate({ title: contentPiece.title, body: generated.text });
+    const qa = runQaGate({ type: "text", title: contentPiece.title, body: generated.text });
     const status: RunToyTextPipelineResult["status"] = qa.passed ? "approved" : "failed";
 
     await prisma.contentPiece.update({
@@ -80,4 +86,29 @@ export async function runToyTextPipeline(
 
     throw error;
   }
+}
+
+function buildPrompt(
+  topic: string,
+  objective: {
+    description: string;
+    audience: string | null;
+    tone: string | null;
+    frequency: string | null;
+  } | null,
+): string {
+  const context = objective
+    ? [
+        `Objetivo: ${objective.description}`,
+        objective.audience ? `Audiencia: ${objective.audience}` : null,
+        objective.tone ? `Tono: ${objective.tone}` : null,
+        objective.frequency ? `Frecuencia: ${objective.frequency}` : null,
+      ]
+        .filter(Boolean)
+        .join("\n")
+    : "";
+
+  return [context, `Escribí un texto corto (2-3 párrafos) sobre: ${topic}`]
+    .filter(Boolean)
+    .join("\n\n");
 }

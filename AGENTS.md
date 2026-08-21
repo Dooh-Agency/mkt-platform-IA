@@ -13,7 +13,8 @@ Principio rector del producto (aplica también a cómo se construye): **la compl
 Fase 1 (Núcleo). Scaffolding del monorepo inicializado y verificado (lint/typecheck/build/test en verde). Antes de generar código, leé:
 
 - [`docs/architecture.md`](docs/architecture.md) — arquitectura técnica y vista de componentes.
-- [`docs/roadmap.md`](docs/roadmap.md) — etapas de crecimiento y qué corresponde a cada fase. La Fase 1 todavía no cierra: falta el registro de herramientas real, más QA por tipo de contenido, y el UX de Modo Simple.
+- [`docs/roadmap.md`](docs/roadmap.md) — etapas de crecimiento y qué corresponde a cada fase.
+- [`docs/modulos.md`](docs/modulos.md) — contrato, orden y gates de los módulos. La Fase 1 es el Módulo 0 (Base Operativa).
 - [`docs/decisions/0001-stack-tecnico.md`](docs/decisions/0001-stack-tecnico.md) — stack: TypeScript full-stack, Next.js, PostgreSQL + pgvector, Prisma, BullMQ/Redis, Vercel + Railway.
 - [`docs/decisions/0002-orquestacion-agentes.md`](docs/decisions/0002-orquestacion-agentes.md) — orquestador propio sobre Claude Agent SDK, sin framework multi-agente de terceros.
 - [`docs/decisions/0003-estructura-monorepo.md`](docs/decisions/0003-estructura-monorepo.md) — estructura de monorepo (pnpm workspaces + Turborepo, `apps/` y `packages/`).
@@ -31,7 +32,7 @@ packages/
   providers/    # adaptador de proveedor de IA intercambiable (Anthropic por defecto)
 ```
 
-Todavía no existen los paquetes `agents-*` ni `ui` — se crean cuando el primer código real los necesite (ver ADR 0003). El pipeline implementado hoy es un pipeline de juguete (`runToyTextPipeline` en `packages/core`) que valida el Core de punta a punta: genera texto vía un job real, lo guarda en memoria, pasa el QA gate, y lo deja en estado `approved` o `failed`. No publica en ninguna plataforma real — eso es Distribution layer, Fase 2.
+Todavía no existen los paquetes `agents-*` ni `ui` — se crean cuando el primer código real los necesite (ver ADR 0003). La Base Operativa integra un pipeline de texto de prueba (`runToyTextPipeline` en `packages/core`): el worker registra la herramienta `generate_text`, el pipeline la invoca mediante el tool registry, guarda el resultado en memoria y pasa un QA por tipo antes de dejarlo en estado `approved` o `failed`. El dashboard expone este flujo en Modo Simple y conserva el disparador técnico en Modo Profesional. No publica en ninguna plataforma real — eso es Distribution layer, Fase 2.
 
 ### Comandos
 
