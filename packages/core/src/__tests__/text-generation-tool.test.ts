@@ -1,10 +1,7 @@
-import { describe, expect, it } from "vitest";
 import type { TextGenerationProvider } from "@dooh/providers";
+import { describe, expect, it } from "vitest";
 import { ToolRegistry } from "../tool-registry.js";
-import {
-  TEXT_GENERATION_TOOL_NAME,
-  createTextGenerationTool,
-} from "../tools/text-generation.js";
+import { TEXT_GENERATION_TOOL_NAME, createTextGenerationTool } from "../tools/text-generation.js";
 
 describe("createTextGenerationTool", () => {
   it("registra y ejecuta el proveedor sin exponerlo al consumidor", async () => {

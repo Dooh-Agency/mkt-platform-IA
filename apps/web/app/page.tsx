@@ -44,7 +44,9 @@ export default async function DashboardPage() {
       </header>
 
       <section className="rounded-lg border border-amber-200 bg-amber-50 p-5">
-        <p className="text-xs font-semibold uppercase tracking-wide text-amber-800">Negocio activo</p>
+        <p className="text-xs font-semibold uppercase tracking-wide text-amber-800">
+          Negocio activo
+        </p>
         <h2 className="mt-1 text-xl font-semibold">{project?.name ?? "Café Raíz"}</h2>
         <p className="mt-2 text-sm text-amber-950">
           {project?.objectives[0]?.description ?? "Objetivo demo pendiente de cargar"}

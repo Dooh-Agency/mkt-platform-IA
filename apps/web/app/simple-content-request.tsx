@@ -1,7 +1,7 @@
 "use client";
 
-import { type FormEvent, useState } from "react";
 import { useRouter } from "next/navigation";
+import { type FormEvent, useState } from "react";
 
 const GOALS = [
   "Atraer más visitas al local",

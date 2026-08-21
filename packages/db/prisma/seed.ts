@@ -80,7 +80,11 @@ async function main() {
     attempts: 1,
     contentPieceId: published.id,
   });
-  await upsertJob({ type: "qa_check", status: "pending", payload: { contentPieceId: qaPending.id } });
+  await upsertJob({
+    type: "qa_check",
+    status: "pending",
+    payload: { contentPieceId: qaPending.id },
+  });
   await upsertJob({
     type: "generate_image",
     status: "failed",
