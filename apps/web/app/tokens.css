@@ -1,0 +1,131 @@
+/* DOOH design tokens. UI colors are independent from each business's brand. */
+:root {
+  color-scheme: light;
+
+  --color-background: #f6f3ef;
+  --color-surface: #ffffff;
+  --color-surface-muted: #f1f5f1;
+  --color-surface-accent: #e3eee6;
+  --color-text: #24332f;
+  --color-text-muted: #52615c;
+  --color-text-on-primary: #ffffff;
+  --color-border: #c4d2c7;
+  --color-border-subtle: #e2e8e3;
+  --color-primary: #294f3f;
+  --color-primary-hover: #1d3c2f;
+  --color-primary-active: #162f25;
+  --color-focus: #155dcc;
+  --color-success: #1d6a3b;
+  --color-success-surface: #e1f3e6;
+  --color-warning: #795000;
+  --color-warning-surface: #fff1ce;
+  --color-danger: #a22424;
+  --color-danger-surface: #ffeded;
+  --color-info: #1555a8;
+  --color-info-surface: #e8f1ff;
+  --color-disabled-text: #5e6963;
+  --color-disabled-surface: #e3e8e3;
+  --color-overlay: rgb(12 20 16 / 60%);
+
+  --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial,
+    sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  --font-size-caption: 0.75rem;
+  --font-size-small: 0.875rem;
+  --font-size-body: 1rem;
+  --font-size-lead: 1.125rem;
+  --font-size-heading-sm: 1.25rem;
+  --font-size-heading-md: 1.5rem;
+  --font-size-heading-lg: 2rem;
+  --line-height-tight: 1.2;
+  --line-height-normal: 1.5;
+  --line-height-relaxed: 1.65;
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+
+  --space-0: 0px;
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-16: 64px;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-pill: 9999px;
+  --shadow-card: 0 1px 3px rgb(22 47 37 / 9%);
+  --shadow-overlay: 0 8px 24px rgb(22 47 37 / 18%);
+  --size-touch-target: 44px;
+  --content-width-reading: 470px;
+  --content-width-app: 1024px;
+}
+
+/* Explicit selection takes priority over the system preference. */
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --color-background: #131b18;
+  --color-surface: #1c2822;
+  --color-surface-muted: #27372e;
+  --color-surface-accent: #30483a;
+  --color-text: #f1f5f1;
+  --color-text-muted: #c1cec4;
+  --color-text-on-primary: #10271a;
+  --color-border: #809589;
+  --color-border-subtle: #52675a;
+  --color-primary: #a7d9b7;
+  --color-primary-hover: #c1e7ca;
+  --color-primary-active: #dcf3e1;
+  --color-focus: #a8caff;
+  --color-success: #a8e2b8;
+  --color-success-surface: #173d26;
+  --color-warning: #ffe0a0;
+  --color-warning-surface: #48340b;
+  --color-danger: #ffb4ab;
+  --color-danger-surface: #531f20;
+  --color-info: #b2ceff;
+  --color-info-surface: #18365f;
+  --color-disabled-text: #b4beb6;
+  --color-disabled-surface: #39453d;
+  --color-overlay: rgb(0 0 0 / 72%);
+  --shadow-card: 0 1px 3px rgb(0 0 0 / 30%);
+  --shadow-overlay: 0 8px 24px rgb(0 0 0 / 45%);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]):not([data-theme="dark"]) {
+    color-scheme: dark;
+    --color-background: #131b18;
+    --color-surface: #1c2822;
+    --color-surface-muted: #27372e;
+    --color-surface-accent: #30483a;
+    --color-text: #f1f5f1;
+    --color-text-muted: #c1cec4;
+    --color-text-on-primary: #10271a;
+    --color-border: #809589;
+    --color-border-subtle: #52675a;
+    --color-primary: #a7d9b7;
+    --color-primary-hover: #c1e7ca;
+    --color-primary-active: #dcf3e1;
+    --color-focus: #a8caff;
+    --color-success: #a8e2b8;
+    --color-success-surface: #173d26;
+    --color-warning: #ffe0a0;
+    --color-warning-surface: #48340b;
+    --color-danger: #ffb4ab;
+    --color-danger-surface: #531f20;
+    --color-info: #b2ceff;
+    --color-info-surface: #18365f;
+    --color-disabled-text: #b4beb6;
+    --color-disabled-surface: #39453d;
+    --color-overlay: rgb(0 0 0 / 72%);
+    --shadow-card: 0 1px 3px rgb(0 0 0 / 30%);
+    --shadow-overlay: 0 8px 24px rgb(0 0 0 / 45%);
+  }
+}

@@ -4,13 +4,17 @@ Contexto de proyecto para agentes de IA (Codex, Claude Code y cualquier otra her
 
 ## Qué es este proyecto
 
-DOOH Agency AI Platform: una plataforma de agentes de IA que produce, distribuye y optimiza contenido multimedia para PyMEs y negocios sin equipo de marketing propio. La visión completa del producto está en [`docs/vision.md`](docs/vision.md) — leela antes de proponer arquitectura o features nuevas.
+DOOH: un asistente de marketing visual, simple y proactivo para pequeños negocios, con acompañamiento opcional de la agencia. La visión completa del producto está en [`docs/vision.md`](docs/vision.md) — leela antes de proponer arquitectura o features nuevas.
 
 Principio rector del producto (aplica también a cómo se construye): **la complejidad técnica se oculta siempre detrás de una experiencia simple.**
 
+## Prioridad vigente (2026-11-11)
+
+Consultar [plan y diagnóstico](docs/producto/plan.md), [roadmap](docs/roadmap.md) y [ADR 0005](docs/decisions/0005-asistente-visual.md). El caso ancla de YouTube y el orden anterior de módulos son históricos. El prototipo `/prototipo` es una simulación aislada para validar UX: no es piloto seguro, no persiste ni publica. No usar datos reales hasta implementar autenticación, aislamiento, almacenamiento seguro, soporte y recuperación. La aprobación automática de QA no sustituye la aprobación del cliente.
+
 ## Estado del repo
 
-Fase 1 (Núcleo). Scaffolding del monorepo inicializado y verificado (lint/typecheck/build/test en verde). Antes de generar código, leé:
+Fase 1 (Núcleo). Scaffolding del monorepo inicializado. En la revisión del 2026-11-11, `corepack pnpm` permitió ejecutar typecheck web y 8 pruebas existentes del core; no se ejecutó una verificación integral ni se pudo iniciar el servidor por restricciones del entorno. Antes de generar código, leé:
 
 - [`docs/architecture.md`](docs/architecture.md) — arquitectura técnica y vista de componentes.
 - [`docs/roadmap.md`](docs/roadmap.md) — etapas de crecimiento y qué corresponde a cada fase.

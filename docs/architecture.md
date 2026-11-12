@@ -1,3 +1,5 @@
+> **Aviso de vigencia (2026-11-11):** el caso ancla de YouTube, el orden de fases y la revisión humana opcional descritos abajo son históricos. La prioridad vigente es [ADR 0005](decisions/0005-asistente-visual.md): asistente visual, aprobación explícita y seguridad/aislamiento antes de clientes reales. Este documento conserva el diseño técnico previo como referencia; no representa funcionalidades implementadas. Consultar [diagnóstico](producto/plan.md) antes de desarrollar.
+
 # Arquitectura Técnica — DOOH Agency AI Platform
 ## v1.0
 

@@ -124,7 +124,10 @@ async function upsertJob(input: {
   contentPieceId?: string;
 }) {
   const existing = await prisma.job.findFirst({
-    where: { type: input.type, payload: input.payload },
+    where: {
+      type: input.type,
+      payload: { equals: input.payload },
+    },
   });
   return existing
     ? prisma.job.update({ where: { id: existing.id }, data: input })

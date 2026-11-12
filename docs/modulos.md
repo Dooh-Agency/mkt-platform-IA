@@ -1,3 +1,5 @@
+> **Prioridad actualizada (2026-11-11):** [ADR 0005](decisions/0005-asistente-visual.md) adelanta la experiencia visual completa y la validación con clientes frente al orden histórico de módulos de abajo. Mantener los gates, adaptados al alcance real; las capacidades listadas no se presumen implementadas. Acceso seguro y aislamiento son requisitos previos al uso de datos reales.
+
 # Modelo de módulos
 
 Este documento traduce el ADR 0004 a una guía de desarrollo y validación. El

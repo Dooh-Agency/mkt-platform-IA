@@ -1,3 +1,12 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Keyboard focus within the prototype; design artwork retains its own palette. */
+.demo-design {
+  font-family: var(--font-sans);
+}
+.demo-design :is(button, a, input, textarea, select):focus-visible {
+  outline: 3px solid var(--color-focus);
+  outline-offset: 3px;
+}
