@@ -1,276 +1,34 @@
-# DOOH Agency AI Platform
-## Documento Fundacional – Visión del Producto (v1.0)
+# Visión de producto — DOOH
 
-> **Visión:** Construir una plataforma de agentes de IA capaz de producir, distribuir y optimizar contenido multimedia de forma casi autónoma, ocultando toda la complejidad tecnológica detrás de una experiencia de usuario extremadamente simple.
+Última revisión: 2026-11-11. Dirección de producto acordada; hipótesis comerciales y del piloto pendientes de validación.
 
----
+## Propósito
 
-# Filosofía
+Un asistente de marketing visual, simple y proactivo para emprendedores, profesionales y pequeños negocios. El usuario conoce su negocio; la aplicación lo guía para comunicarlo de manera clara, visual y constante. La complejidad técnica permanece detrás de una experiencia cómoda desde el celular y también usable en computadora.
 
-## La IA debe desaparecer
+## Propuesta
 
-El usuario nunca debe sentir que utiliza agentes, modelos o automatizaciones.
+Configurar progresivamente el negocio y su identidad; recibir ideas pertinentes; crear publicaciones con recursos propios; editar tocando imagen y texto; previsualizar, revisar y descargar. En etapas posteriores, conectar redes, publicar con autorización explícita y conocer resultados disponibles. Nunca inventar precios, promociones, stock, características, testimonios ni resultados.
 
-Debe sentir que simplemente está gestionando su marketing, igual que administra una red social.
+La app distingue datos, interpretaciones y recomendaciones; no promete crecimiento. Las tendencias necesitan fuentes recientes verificables; hasta contar con ellas, DOOH puede proponer ideas editoriales identificadas como tales. Las vistas previas son representaciones: la apariencia final puede variar.
 
-**Principio:**
+## Personas y servicios
 
-> El usuario administra su negocio. La IA administra la complejidad.
+Dirigida a personas que conocen su negocio y usan aplicaciones cotidianas, sin requerir conocimientos de marketing o diseño. Comercios de productos son una hipótesis para el primer piloto, pendiente de selección según los clientes disponibles.
 
----
+Se contemplan app autogestionada, setup opcional de marca, acompañamiento y gestión de contenidos por DOOH. La creación de identidad profesional se cotiza por separado. Alcances y precios se validarán; no construir facturación completa antes de validar el producto.
 
-# Problema que resolvemos
+## Principios
 
-Las pequeñas empresas no tienen:
+- Lenguaje cotidiano, decisiones acotadas, navegación visual, avance y errores claros.
+- Alta progresiva y datos modificables; no exigir identidad completa para empezar.
+- Capas editables, guardado visible, deshacer y recuperación ante fallas en la versión funcional.
+- Sugerencias pertinentes con opción de aceptar o descartar; preferencias simples y transparentes.
+- Ninguna publicación sin acción o autorización clara del usuario. QA automático no equivale a aprobación humana.
+- Datos aislados y acceso seguro antes de abrir un piloto con información real.
 
-- tiempo;
-- conocimientos técnicos;
-- presupuesto para contratar un equipo de marketing.
+## Primer resultado a validar
 
-La plataforma debe convertirse en un departamento completo de marketing impulsado por IA.
+Negocio → foto y datos del producto → propuesta visual → edición directa → vista previa → descarga y copia. Antes de construir todas las integraciones se observará a 3–5 clientes con un prototipo y apoyo manual cuando corresponda. Ver [plan de producto](producto/plan.md) y [roadmap](roadmap.md).
 
----
-
-# Público objetivo
-
-- Comercios locales
-- PyMEs
-- Profesionales independientes
-- Empresas sin departamento de marketing
-- Emprendedores
-
----
-
-# Principios de UX
-
-1. Simplicidad por encima de potencia.
-2. Un clic vale más que diez configuraciones.
-3. El usuario define objetivos, no herramientas.
-4. Progressive Disclosure (mostrar complejidad solo cuando aporta valor).
-5. Todo debe entenderse en menos de 10 segundos.
-
-## Modos
-
-### Modo Simple
-Pensado para el 90% de los usuarios.
-
-El usuario solo responde preguntas como:
-
-- ¿Qué querés lograr?
-- ¿Con qué frecuencia querés publicar?
-- ¿Qué tipo de negocio tenés?
-
-La IA hace el resto.
-
-### Modo Profesional
-
-Permite acceder a:
-
-- agentes
-- workflows
-- herramientas
-- reglas
-- automatizaciones
-
----
-
-# Arquitectura conceptual
-
-```text
-                  DOOH Agency AI Platform
-                           │
-        ┌──────────────────┼──────────────────┐
-        │                  │                  │
- Intelligence         Production         Distribution
-        │                  │                  │
-        └──────────── Optimization ───────────┘
-```
-
-## Core
-
-- Orquestador de agentes
-- Memoria compartida
-- Sistema de tareas
-- Registro de herramientas
-- Control de calidad (QA)
-
-Todo lo demás funciona como módulos.
-
----
-
-# Capas
-
-## Intelligence Layer
-
-Investiga.
-
-Analiza.
-
-Planifica.
-
-Toma decisiones.
-
-## Production Layer
-
-Genera:
-
-- artículos
-- videos
-- Shorts
-- imágenes
-- podcasts
-- newsletters
-- presentaciones
-- documentos
-
-## Distribution Layer
-
-Publica automáticamente en:
-
-- YouTube
-- Instagram
-- TikTok
-- LinkedIn
-- Facebook
-- Blog
-- Email
-
-## Optimization Layer
-
-Analiza:
-
-- CTR
-- Retención
-- Conversión
-- Engagement
-- ROI
-
-Retroalimenta al sistema.
-
----
-
-# Primer módulo estratégico
-
-## Content Production Engine
-
-Entrada:
-
-- objetivo
-- público
-- tono
-- frecuencia
-
-Salida:
-
-- Video largo
-- Shorts
-- Artículo
-- Carrusel
-- Imágenes
-- Newsletter
-- Lead Magnet
-- Publicaciones sociales
-
-Todo parte de una única investigación.
-
----
-
-# El canal de YouTube
-
-No será un proyecto independiente.
-
-Será el primer caso de uso del motor de producción.
-
-Servirá para:
-
-- validar agentes;
-- medir costos;
-- optimizar calidad;
-- entrenar el sistema.
-
----
-
-# Roadmap
-
-## Fase 1 – Núcleo
-
-- Arquitectura
-- Orquestador
-- Memoria
-- Sistema de tareas
-- QA
-- Diseño UX/UI
-
-## Fase 2 – MVP
-
-- Investigación SEO
-- Guiones
-- Generación multimedia
-- Edición
-- Publicación
-- Dashboard
-
-Costo estimado:
-USD 5.000–15.000
-
-## Fase 3 – Plataforma
-
-- Multiusuario
-- Campañas
-- Analítica
-- Aprendizaje continuo
-- Múltiples proyectos
-
-Costo estimado:
-USD 30.000–80.000
-
-## Fase 4 – SaaS
-
-- Facturación
-- Seguridad
-- Escalabilidad
-- Administración
-- Comercialización
-
-Costo estimado:
-USD 100.000–250.000
-
----
-
-# Diferencial competitivo
-
-No enseñamos IA.
-
-No vendemos herramientas.
-
-Vendemos resultados.
-
-El usuario nunca debería pensar en prompts, modelos o agentes.
-
-Solo debería pensar en hacer crecer su negocio.
-
----
-
-# Visión a largo plazo
-
-DOOH Agency evolucionará desde una plataforma de generación de contenido hacia un sistema operativo para empresas impulsadas por IA.
-
-El contenido multimedia será el primer módulo.
-
-En el futuro podrá coordinar agentes para:
-
-- marketing
-- ventas
-- diseño
-- documentación
-- análisis
-- soporte
-- operaciones
-
-Todo sobre un mismo núcleo.
-
----
-
-# Frase guía
-
-> **"El usuario administra su negocio. La IA administra la complejidad."**
+La visión previa contemplaba YouTube como caso ancla y producción multimedia amplia. Se mantiene como posibilidad futura, no como prioridad del piloto. Los importes de la versión anterior no son presupuestos vigentes.

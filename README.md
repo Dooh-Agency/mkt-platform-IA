@@ -1,23 +1,11 @@
-# DOOH Agency AI Platform
+# DOOH — asistente de marketing visual
 
-Plataforma de agentes de IA para producir, distribuir y optimizar contenido multimedia de forma casi autónoma para PyMEs, comercios locales y profesionales independientes sin equipo de marketing propio.
+Aplicación en desarrollo para ayudar a pequeños negocios a decidir qué comunicar y crear publicaciones visuales con su identidad. [Visión](docs/vision.md) · [Plan y diagnóstico](docs/producto/plan.md) · [Hoja de ruta](docs/roadmap.md) · [Arquitectura](docs/architecture.md) · [Decisiones](docs/decisions/).
 
-> "El usuario administra su negocio. La IA administra la complejidad."
+El repositorio incluye una demostración técnica de generación de texto para Café Raíz. No es todavía un producto multiusuario ni está listo para datos reales. El prototipo visual en `/prototipo` sirve para probar el recorrido con datos ficticios; no guarda ni publica contenido.
 
-## Estado actual
+Para abrirlo localmente, ejecutar `corepack pnpm --filter @dooh/web dev` y visitar `http://localhost:3000/prototipo`. Usa únicamente datos ficticios.
 
-Proyecto en **Fase 1 – Núcleo** (ver [Roadmap](docs/vision.md#roadmap)). Todavía no hay stack técnico definido ni código de producto; este repo arranca como base documental y de contexto para trabajar con asistentes de IA (Claude Code, Codex, etc.).
+La demo incluye perfil guiado, sugerencia editorial simulada, propuestas locales, edición y plantillas. No conecta ni analiza redes, no genera con IA en ese flujo y no conserva cambios al recargar. Los detalles, limitaciones y próximos pasos están en [plan de producto](docs/producto/plan.md); el sistema visual está en [DESIGN.md](DESIGN.md) y su muestra en `/sistema-diseno`.
 
-## Documentación
-
-- [`docs/vision.md`](docs/vision.md) — Documento fundacional de producto (filosofía, arquitectura conceptual, capas, roadmap y modelo de costos).
-- [`docs/decisions/`](docs/decisions/) — Registro de decisiones de arquitectura/producto (ADRs), para que cualquier IA que retome el proyecto entienda por qué se tomó cada decisión sin depender del historial de chat.
-
-## Trabajar en este repo con cualquier IA
-
-Este proyecto está pensado para trabajarse indistintamente con Claude Code, Codex o cualquier otra herramienta de desarrollo asistido por IA:
-
-- [`AGENTS.md`](AGENTS.md) — fuente única de verdad del contexto de proyecto (estado, convenciones, cómo coordinar entre sesiones/herramientas distintas).
-- [`CLAUDE.md`](CLAUDE.md) — importa `AGENTS.md` directamente, no hay contenido duplicado que pueda desincronizarse.
-
-Cualquier cambio de convención, stack o estructura se documenta en `AGENTS.md` en el mismo commit que lo introduce.
+Para trabajar con cualquier asistente, consultar [AGENTS.md](AGENTS.md). Los comandos y dependencias están documentados allí.
